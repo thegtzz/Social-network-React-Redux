@@ -8,7 +8,6 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import Friends from "./components/Friends/Friends";
 
 
 const App = (props) => {
@@ -18,7 +17,9 @@ const App = (props) => {
                 <Navbar state={props.state.sidebar}/>
                 <div className='app-wrapper-content'>
                     <Route path='/profile' render={() => <Profile
-                        state={props.state.profilePage}/>}/>
+                        profilePage={props.state.profilePage}
+                            addPost={props.addPost}
+                        updateNewPostText={props.updateNewPostText}/>}/>
                     <Route path='/dialogs' render={() => <Dialogs
                         state={props.state.dialogsPage} />}/>
                     <Route path='/news' component={News}/>
