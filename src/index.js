@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import store from "./redux/State";
+import store from "./redux/redux-store";
 
 
 let rerenderEntireTree = (state) => {
@@ -11,7 +11,8 @@ let rerenderEntireTree = (state) => {
         <React.StrictMode>
             <BrowserRouter>
                 <App state={state}
-                     dispatch={store.dispatch.bind(store)}/>
+                     dispatch={store.dispatch.bind(store)}
+                     store={store}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -21,7 +22,10 @@ let rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState())
 
-store.subscribe(rerenderEntireTree)
+store.subscribe(() => {
+    let state = store.getState()
+    rerenderEntireTree(state)
+    })
 
 
 // If you want your app to work offline and load faster, you can change
