@@ -1,17 +1,28 @@
 import React from "react";
 import s from "../Friends.module.css";
-import {NavLink} from "react-router-dom";
 
 
 const Friend = (props) => {
-    let path = "/friends/" + props.id
-
     return (
         <div className={s.friend_row}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRLjTsWnfiq5ME7swO8un1LUlz92NWwHgeVm4MGZa-vMc3cT7HI&usqp=CAU" alt=""/>
-            <div>
-                <NavLink to={path}>{props.name}</NavLink>
-            </div>
+            <span>
+                <div>
+                    <img src={props.photoUrl} alt=""/>
+                </div>
+                <div>
+                    { props.followed ? <button onClick={() => {props.f}}>Unfollow</button> : <button>Follow</button>}
+                </div>
+            </span>
+            <span>
+                <span>
+                    <div>{props.fullname}</div>
+                    <div>{props.status}</div>
+                </span>
+                <span>
+                    <div>{props.country}</div>
+                    <div>{props.city}</div>
+                </span>
+            </span>
         </div>
     )
 }
