@@ -9,3 +9,7 @@
 .friend_row {
     display: inline-block;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
