@@ -3,13 +3,15 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import friendsReducer from "./friends-reducer";
+import authReducer from './auth-reducer'
 
 
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sidebarReducer,
-    friendsPage: friendsReducer
+    friendsPage: friendsReducer,
+    auth: authReducer,
 })
 
 let store = createStore(reducers)
