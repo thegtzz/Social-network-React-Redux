@@ -3,36 +3,19 @@ import {connect} from "react-redux";
 import {
     follow,
     setCurrentPage,
-    setUsers,
-    setTotalUsersCount,
-    toggleIsFetching,
-    unfollow
+    unfollow, toggleFollowingProgress, getUsers
 } from "../../redux/friends-reducer";
 import Friends from "./Friends";
 import Preloader from "../common/Preloader/Preloader";
-import {userAPI} from "../../api/api";
 
 
 class FriendsContainer extends React.Component {
     componentDidMount() {
-        if (this.props.users.length === 0) {
-            this.props.toggleIsFetching(true)
-
-            userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
-        }
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-         userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-             this.props.toggleIsFetching(false)
-             this.props.setUsers(data.items)
-         })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -44,6 +27,7 @@ class FriendsContainer extends React.Component {
                      follow={this.props.follow}
                      unfollow={this.props.unfollow}
                      onPageChanged={this.onPageChanged}
+                     followingInProgress={this.props.followingInProgress}
             />
         </>
     }
@@ -56,9 +40,11 @@ let mapStateToProps = (state) => {
         pageSize: state.friendsPage.pageSize,
         totalUsersCount: state.friendsPage.totalUsersCount,
         currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching
+        isFetching: state.friendsPage.isFetching,
+        followingInProgress: state.friendsPage.followingInProgress
     }
 }
 
 export default connect(mapStateToProps,
-    {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(FriendsContainer)
+    {follow, unfollow, setCurrentPage,
+        toggleFollowingProgress, getUsers})(FriendsContainer)
