@@ -1,6 +1,7 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -15,6 +16,7 @@ const ProfileInfo = (props) => {
                 <img
                     src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg"
                     alt=""/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
             <div className={s.descriptionBlock}>
                 <img src={props.profile.photos.large}/>
