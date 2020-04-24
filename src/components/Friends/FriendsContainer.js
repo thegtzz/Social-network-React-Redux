@@ -32,6 +32,7 @@ class FriendsContainer extends React.Component {
             { this.props.isFetching ? <Preloader/> : null }
             <Friends totalUsersCount={this.props.totalUsersCount}
                      currentPage={this.props.currentPage}
+                     pageSize={this.props.pageSize}
                      users={this.props.users}
                      follow={this.props.follow}
                      unfollow={this.props.unfollow}
