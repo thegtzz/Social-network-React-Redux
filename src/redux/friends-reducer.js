@@ -1,4 +1,4 @@
-import {profileAPI, userAPI} from "../api/api";
+import {userAPI} from "../api/api";
 import {updateObjectInArray} from "../utils/object-helpers";
 
 const FOLLOW = 'FOLLOW'
@@ -44,7 +44,7 @@ const friendsReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         default:
             return state
