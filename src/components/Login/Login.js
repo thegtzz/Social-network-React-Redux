@@ -10,7 +10,7 @@ import s from "../common/FormsControls/FormsControls.module.css"
 
 const Input = Element('input')
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -22,6 +22,13 @@ const LoginForm = ({handleSubmit, error}) => {
             <div>
                 <Field component={Input} name={"rememberMe"} type={"checkbox"}/> remember me
             </div>
+
+            {captchaUrl && <img src={captchaUrl} alt=""/>}
+            {captchaUrl && <Field placeholder={"Symbols from image"}
+                                  name={"captcha"}
+                                  validate={[requiredField]}
+                                  component={Input}/>}
+
             {error && <div className={s.formSummaryError}>
                 {error}
             </div>}
@@ -36,7 +43,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if(props.isAuth) {
@@ -45,14 +52,15 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 
