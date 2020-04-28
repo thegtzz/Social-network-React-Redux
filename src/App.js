@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Redirect, Route} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
@@ -31,6 +31,7 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
+                    <Redirect from={"/"} to={"/profile"}/>
                     <React.Suspense fallback={<Preloader/>}>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                     </React.Suspense>
