@@ -1,18 +1,138 @@
-/*.descriptionBlock {*/
-/*    padding: 10px;*/
-/*    height: 300px;*/
-/*}*/
-
-/*.descriptionBlock img {*/
-/*    float: left;*/
-/*    margin: 5px;*/
-/*}*/
-
-.descriptionBlock span {
-    display: block;
-    margin: 10px;
+.mainPhotoBlock {
+    max-width: 200px;
+    border-radius: 2px;
+    margin-bottom: 10px;
 }
 
-.mainPhoto {
-    max-width: 200px;
+.profilePhoto {
+    display: inline-block;
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.uploadPhoto {
+    background-color: #e5ebf1;
+    color: #55677d;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    padding: 7px 25px 8px;
+    width: 150px;
+    border-radius: 4px;
+    line-height: 15px;
+    text-align: center;
+}
+
+.uploadPhoto:hover {
+  background-color: #dae2ea;
+}
+
+.labelEditMainPhoto {
+    cursor: pointer;
+}
+
+.profileDataBlock {
+    display: inline-block;
+    position: absolute;
+    width: 510px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 15px;
+    padding: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pageTop {
+    border-bottom: 1px solid #e7e8ec;
+    padding: 0 0 15px;
+}
+
+.profileDataBlock h1 {
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 400;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin: -1px 0 6px -1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 1px;
+    color: #000;
+}
+
+.profileStatus {
+    cursor: pointer;
+    margin: -4px -6px -4px;
+    padding: 4px 6px 4px;
+    color: #939393;
+    font-size: 14px;
+}
+
+.profileStatus:hover {
+    background-color: #dae2ea;
+    border-radius: 2px;
+}
+
+.profileInfo {
+    line-height: 150%;
+    border-bottom: 1px solid #e7e8ec;
+    padding: 10px 0 30px;
+}
+
+.profileInfoAbout {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.profileInfoLeft {
+    width: 165px;
+    color: #828282;
+}
+
+.profileContacts {
+    line-height: 150%;
+    padding: 10px 0 15px;
+}
+
+.contactSep {
+    position: relative;
+    margin: -25px 0 4px;
+    padding-right: 7px;
+    background-color: #fff;
+    width: 60px;
+    font-size: 14px;
+}
+
+.btnProfileEdit {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #828282;
+    font-size: 13px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.btnProfileEdit:hover {
+    text-decoration: underline;
+}
+
+.profileDataBlock:hover .btnProfileEdit {
+    opacity: 1;
+}
+
+.textarea {
+    width: 300px;
+    height: 50px;
 }
