@@ -5,13 +5,18 @@ import s from './Post.module.css'
 const Post = (props) => {
 
     return (
-        <div className={s.item}>
-            <img
-                src="https://cdn1.iconfinder.com/data/icons/diversity-avatars-volume-01-circles/64/matrix-morpheus-512.png"
-                alt=""/>
-            { props.message }
+        <div className={s.wallPostInfo}>
             <div>
-                <span>{props.likesCount} Likes</span>
+                <img className={s.wallPostImage} src={props.profile.photos.large} alt=""/>
+                <div className={s.wallPostHeaderInfo}>{props.profile.fullName}</div>
+                <div className={s.wallPostHeaderDate}>1 May 2020</div>
+            </div>
+            <div className={s.wallPostContent}>
+                { props.message }
+            </div>
+            <div className={s.wallPostLikeWrap}>
+                <div className={s.wallPostLikes}>42</div>
+                <div className={s.wallPostViews}>42</div>
             </div>
         </div>
     )

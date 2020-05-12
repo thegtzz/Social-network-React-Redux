@@ -1,7 +1,86 @@
 .postsBlock {
-    padding: 10px;
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 15px 155px 0;
+    font-size: 13px;
+    width: 540px;
+    float: right;
+}
+
+.postsBlock img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    position: absolute;
+    top: 12px;
+    left: 20px;
+}
+
+.postField {
+    width: 465px;
+    padding: 15px 20px 10px 55px;
+}
+
+.postField textarea {
+    width: 460px;
+    min-height: 20px;
+    border: 0;
+    border-radius: 4px;
+    line-height: 1.462;
+    word-wrap: break-word;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+}
+
+.submitPost {
+    background: #fafbfc;
+    border-top: 1px solid #e7e8ec;
+    padding: 13px 20px 12px;
+    border-radius: 0 0 4px 4px;
+    height: 30px;
+}
+
+.addPostButtonWrap {
+    position: relative;
+    float: right;
+    margin-bottom: 13px;
+}
+
+.addWallPostButton {
+    padding: 7px 16px 8px;
+    margin: 0;
+    font-size: 12.5px;
+    display: inline-block;
+    zoom: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: none;
+    vertical-align: top;
+    line-height: 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #5181b8;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .posts {
     margin-top: 10px;
+}
+
+.wallPostBlock {
+    position: relative;
+    float: right;
+    margin: 0 155px 0 15px;
 }
