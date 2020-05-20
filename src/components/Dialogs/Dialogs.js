@@ -3,29 +3,34 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
+import {Field, Form} from "react-final-form";
 import {Element} from "../common/FormsControls/FormsControls";
-import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
+import {maxLengthCreator} from "../../utils/validators/validators";
 
 
 const Textarea = Element('textarea')
 const maxLength50 = maxLengthCreator(50)
 
-const DialogsForm = (props) => {
+const DialogsForm = ({onSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field placeholder={"Type your message"} name={"DialogMessage"} component={Textarea}
-                    validate={[requiredField, maxLength50]}/>
-            <div>
-                <button>Send message</button>
-            </div>
-        </form>
+        <Form onSubmit={onSubmit}>
+            {({handleSubmit, form}) => (
+                <form onSubmit={async (event) => {
+                        await handleSubmit(event)
+                        form.reset()
+                }}>
+                    <Field placeholder={"Type your message"} name={"DialogMessage"} component={Textarea}
+                            validate={maxLength50}/>
+                    <div>
+                        <button>Send message</button>
+                    </div>
+                </form>
+            )}
+        </Form>
     )
 }
 
-const DialogsReduxForm = reduxForm({form: 'dialogSendMessage'})(DialogsForm)
-
-const Dialogs = (props) => {
+export const Dialogs = (props) => {
 
     let state = props.dialogsPage
 
@@ -46,10 +51,8 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 { messagesElements }
-                <DialogsReduxForm onSubmit={onSubmit}/>
+                <DialogsForm onSubmit={onSubmit}/>
             </div>
         </div>
     )
 }
-
-export default Dialogs
