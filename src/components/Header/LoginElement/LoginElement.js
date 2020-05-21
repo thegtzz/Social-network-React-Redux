@@ -3,7 +3,7 @@ import s from "../Header.module.css";
 import {NavLink} from "react-router-dom";
 import userImage from '../../../assets/images/user.png'
 import {useOutsideClick} from "../CustomHeaderHooks/useOutsideClick";
-import Preloader from "../../common/Preloader/Preloader";
+import {Preloader} from "../../common/Preloader/Preloader";
 
 
 export const LoginElement = (props) => {

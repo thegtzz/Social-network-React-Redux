@@ -6,7 +6,7 @@ import {
     unfollow, toggleFollowingProgress, requestUsers
 } from "../../redux/friends-reducer";
 import Friends from "./Friends";
-import Preloader from "../common/Preloader/Preloader";
+import {Preloader} from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {

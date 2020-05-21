@@ -1,18 +1,13 @@
 import React, {useState} from "react";
 import s from './ProfileInfo.module.css'
-import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import ProfileDataFormReduxForm from "./ProfileDataForm";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import {ProfileDataForm} from "./ProfileDataForm";
 import cn from "classnames"
 
 
-const ProfileInfo = (props) => {
+export const ProfileInfo = (props) => {
     const [editMode, setEditMode] = useState(false)
-
-    if (!props.profile) {
-        return <Preloader/>
-    }
 
     const mainPhotoSelected = (e) => {
         if(e.target.files.length) {
@@ -44,7 +39,7 @@ const ProfileInfo = (props) => {
             </div>
 
             {editMode
-                ? <ProfileDataFormReduxForm initialValues={props.profile}
+                ? <ProfileDataForm initialValues={props.profile}
                                             profile={props.profile}
                                             onSubmit={onSubmit}/>
                 : <ProfileData profile={props.profile}
@@ -102,5 +97,3 @@ const Contact = ({contactTitle, contactValue}) => {
         </div>
     )
 }
-
-export default ProfileInfo
