@@ -11,57 +11,32 @@ import SettingsIcon from '@vkontakte/icons/dist/24/settings';
 
 const Navbar = (props) => {
     return <nav className={s.nav}>
-                <ol>
-                    <div className={s.test}>
-                        <li>
-                            <NavLink to='/profile'>
-                                <span className={s.leftFixer}>
-                                    <span><ProfileIcon className={s.leftIcon} width={20} height={20}/></span>
-                                    <span className={s.leftLabel}>My profile</span>
-                                </span>
-                            </NavLink>
-                        </li>
-                    </div>
-                    <li>
-                        <NavLink to='/news'>
-                            <span className={s.leftFixer}>
-                                <span><NewsIcon className={s.leftIcon} width={20} height={20}/></span>
-                                <span className={s.leftLabel}>News</span>
-                            </span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/dialogs'>
-                            <span className={s.leftFixer}>
-                                <span><MessagesIcon className={s.leftIcon} width={20} height={20}/></span>
-                                <span className={s.leftLabel}>Messages</span>
-                            </span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/friends'><span className={s.leftFixer}>
-                                <span><UserIcon className={s.leftIcon} width={20} height={20}/></span>
-                                <span className={s.leftLabel}>Friends</span>
-                            </span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/music'><span className={s.leftFixer}>
-                                <span><MusicIcon className={s.leftIcon} width={20} height={20}/></span>
-                                <span className={s.leftLabel}>Music</span>
-                            </span>
-                        </NavLink>
-                    </li>
-                    <div className={s.separateDiv}></div>
-                    <li>
-                        <NavLink to='/settings'><span className={s.leftFixer}>
-                                <span><SettingsIcon className={s.leftIcon} width={20} height={20}/></span>
-                                <span className={s.leftLabel}>Settings</span>
-                            </span>
-                        </NavLink>
-                    </li>
-                </ol>
-            </nav>
+            <NavLink to='/profile' className={s.navlinkgrid}>
+                <ProfileIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>My profile</span>
+            </NavLink>
+            <NavLink to='/news' className={s.navlinkgrid}>
+                <NewsIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>News</span>
+            </NavLink>
+            <NavLink to='/dialogs' className={s.navlinkgrid}>
+                <MessagesIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>Messages</span>
+            </NavLink>
+            <NavLink to='/friends' className={s.navlinkgrid}>
+                <UserIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>Friends</span>
+            </NavLink>
+            <NavLink to='/music' className={s.navlinkgrid}>
+                <MusicIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>Music</span>
+            </NavLink>
+            <div className={s.separateDiv}></div>
+            <NavLink to='/settings' className={s.navlinkgrid}>
+                <SettingsIcon className={s.leftIcon}/>
+                <span className={s.leftLabel}>Settings</span>
+            </NavLink>
+    </nav>
 }
 
 export default Navbar

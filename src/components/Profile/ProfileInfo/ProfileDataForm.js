@@ -1,5 +1,6 @@
 import s from "./ProfileInfo.module.css";
 import st from "../../common/FormsControls/FormsControls.module.css"
+import pm from "../Profile.module.css"
 import React from "react";
 import {Form, Field} from "react-final-form";
 import {Element} from "../../common/FormsControls/FormsControls";
@@ -13,16 +14,16 @@ export const ProfileDataForm = ({profile, error, onSubmit}) => {
     return (
         <Form initialValues={profile} onSubmit={onSubmit}>
             {({handleSubmit}) => (
-                <form onSubmit={handleSubmit} className={s.profileDataBlock}>
-                    <label htmlFor='editProfileInfo' className={s.btnProfileEdit}>Save
-                        <button id='editProfileInfo' className={s.hidden}></button>
-                    </label>
+                <form onSubmit={handleSubmit} className={pm.mainInfo}>
                     {error && <div className={st.formSummaryError}>
                         {error}
                     </div>}
 
                     <div className={s.pageTop}>
-                        <h1><Field placeholder={"Full name"} name={"fullName"} component={Input}/></h1>
+                        <label htmlFor='editProfileInfo' className={pm.btnProfileEdit}>Save
+                            <button id='editProfileInfo' className={s.hidden}></button>
+                        </label>
+                        <h1 className={s.name}><Field placeholder={"Full name"} name={"fullName"} component={Input}/></h1>
                     </div>
                     <div className={s.profileInfo}>
                         <div>

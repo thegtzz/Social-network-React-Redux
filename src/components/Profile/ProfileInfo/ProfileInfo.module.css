@@ -1,3 +1,7 @@
+.mainContent {
+
+}
+
 .mainPhotoBlock {
     max-width: 200px;
     border-radius: 2px;
@@ -5,9 +9,9 @@
 }
 
 .profilePhoto {
-    display: inline-block;
-    position: relative;
-    float: left;
+    display: grid;
+    justify-self: start;
+    align-self: start;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
@@ -41,24 +45,15 @@
     cursor: pointer;
 }
 
-.profileDataBlock {
-    display: inline-block;
-    position: relative;
-    width: 510px;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
-    margin: 15px 15px 0;
-    padding: 15px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-}
-
 .pageTop {
+    display: grid;
+    grid-template-areas: 'n e' 's s';
     border-bottom: 1px solid #e7e8ec;
     padding: 0 0 15px;
 }
 
-.profileDataBlock h1 {
+.name {
+    grid-area: n;
     font-size: 19px;
     line-height: 25px;
     font-weight: 400;
@@ -72,6 +67,7 @@
 }
 
 .profileStatus {
+    grid-area: s;
     cursor: pointer;
     margin: -4px -6px -4px;
     padding: 4px 6px 4px;
@@ -112,25 +108,6 @@
     background-color: #fff;
     width: 60px;
     font-size: 14px;
-}
-
-.btnProfileEdit {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #828282;
-    font-size: 13px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.1s ease;
-}
-
-.btnProfileEdit:hover {
-    text-decoration: underline;
-}
-
-.profileDataBlock:hover .btnProfileEdit {
-    opacity: 1;
 }
 
 .textarea {

@@ -1,7 +1,9 @@
 .header {
   grid-area: h;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
   background-color: #4a76a8;
-  height: 42px;
 }
 
 .header img {
@@ -25,8 +27,8 @@
 }
 
 .loginBlock {
-  float: right;
-  margin-right: 150px;
+  grid-column-start: 3;
+  justify-self: center;
   height: 42px;
   line-height: 42px;
   color: #fff;

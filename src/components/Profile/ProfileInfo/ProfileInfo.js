@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import s from './ProfileInfo.module.css'
+import pm from '../Profile.module.css'
 import userPhoto from "../../../assets/images/user.png";
-import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
 import {ProfileDataForm} from "./ProfileDataForm";
 import cn from "classnames"
 
@@ -23,9 +24,9 @@ export const ProfileInfo = (props) => {
         )
     }
 
-    return (
-        <div>
-            <div className={s.profilePhoto}>
+    return <>
+
+            <div className={cn(pm.mainPhoto, s.profilePhoto)}>
                 <img
                     src={props.profile.photos.large || userPhoto} className={s.mainPhotoBlock}
                     alt=""/>
@@ -49,16 +50,16 @@ export const ProfileInfo = (props) => {
                                isOwner={props.isOwner}
                                status={props.status}
                                updateStatus={props.updateStatus}/>}
-        </div>
-    )
+
+    </>
 }
 
 const ProfileData = (props) => {
     return (
-        <div className={s.profileDataBlock}>
-            {props.isOwner && <label htmlFor='editProfileInfo' className={s.btnProfileEdit}>Edit<button id='editProfileInfo' className={s.hidden} onClick={props.goToEditMode}></button></label>}
+        <div className={pm.mainInfo}>
             <div className={s.pageTop}>
-                <h1>{props.profile.fullName}</h1>
+                {props.isOwner && <label htmlFor='editProfileInfo' className={pm.btnProfileEdit}>Edit<button id='editProfileInfo' className={s.hidden} onClick={props.goToEditMode}></button></label>}
+                <h1 className={s.name}>{props.profile.fullName}</h1>
                 <div className={s.profileStatus}>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>

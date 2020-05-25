@@ -1,0 +1,55 @@
+.mainContent {
+    display: grid;
+    grid-template-columns: 230px auto;
+    grid-template-areas: "mainPhoto info"
+                         "friends info"
+                         "friends sendPost"
+                         "friends wallPosts";
+    grid-column-gap: 15px;
+}
+
+.mainPhoto {
+    grid-area: mainPhoto;
+}
+
+.mainInfo {
+    grid-area: info;
+    width: 510px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 15px 0 0;
+    padding: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.friends {
+    grid-area: friends;
+    height: 200px;
+}
+
+.sendPost {
+    grid-area: sendPost;
+    height: 150px;
+}
+
+.wallPosts {
+    grid-area: wallPosts;
+}
+
+.btnProfileEdit {
+    justify-self: end;
+    color: #828282;
+    font-size: 13px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.btnProfileEdit:hover {
+    text-decoration: underline;
+}
+
+.mainInfo:hover .btnProfileEdit {
+    opacity: 1;
+}

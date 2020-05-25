@@ -1,39 +1,42 @@
+.main {
+    display: grid;
+    grid-template-columns: 230px auto;
+    grid-column-gap: 15px;
+}
+
 .postsBlock {
-    position: relative;
+    display: grid;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
-    margin: 15px 155px 0;
+    margin-top: 15px;
     font-size: 13px;
     width: 540px;
-    float: right;
-}
-
-.postsBlock img {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease;
-    backface-visibility: hidden;
-    transform: rotateY(0deg);
-    position: absolute;
-    top: 12px;
-    left: 20px;
 }
 
 .postField {
+    display: grid;
+    grid-template-areas: "img input";
+    grid-column-gap: 10px;
+    grid-template-rows: minmax(70px, auto);
     width: 465px;
-    padding: 15px 20px 10px 55px;
+    padding: 15px 20px 10px 20px;
+}
+
+.postField img {
+    grid-area: img;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
 }
 
 .postField textarea {
+    grid-area: input;
+    min-height: 60px;
     width: 460px;
-    min-height: 20px;
     border: 0;
     border-radius: 4px;
     line-height: 1.462;
-    word-wrap: break-word;
     resize: none;
     outline: none;
     overflow: hidden;
@@ -42,6 +45,7 @@
 }
 
 .submitPost {
+    display: grid;
     background: #fafbfc;
     border-top: 1px solid #e7e8ec;
     padding: 13px 20px 12px;
@@ -50,29 +54,18 @@
 }
 
 .addPostButtonWrap {
-    position: relative;
-    float: right;
-    margin-bottom: 13px;
+    justify-self: end;
 }
 
 .addWallPostButton {
     padding: 7px 16px 8px;
-    margin: 0;
     font-size: 12.5px;
-    display: inline-block;
-    zoom: 1;
     cursor: pointer;
-    white-space: nowrap;
-    outline: none;
-    vertical-align: top;
     line-height: 15px;
-    text-align: center;
-    text-decoration: none;
     background-color: #5181b8;
     color: #fff;
     border: 0;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
 .posts {
@@ -80,7 +73,5 @@
 }
 
 .wallPostBlock {
-    position: relative;
-    float: right;
-    margin: 0 155px 0 15px;
+    grid-column-start: 2;
 }
