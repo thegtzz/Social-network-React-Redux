@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import s from './ProfileInfo.module.css'
 import pm from '../Profile.module.css'
-import userPhoto from "../../../assets/images/user.png";
+import userPhoto from "../../../assets/images/upload_profile_photo.png";
 import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
 import {ProfileDataForm} from "./ProfileDataForm";
 import cn from "classnames"

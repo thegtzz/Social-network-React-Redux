@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 import {Form, Field} from "react-final-form";
 import {maxLengthCreator} from "../../../utils/validators/validators";
 import {Element} from "../../common/FormsControls/FormsControls";
-import userImage from "../../../assets/images/user.png";
+import userImage from "../../../assets/images/upload_profile_photo.png";
 import {ProfileFriendsBlock} from "../../Friends/ProfileFriendsBlock/ProfileFriendsBlock";
 
 
