@@ -2,7 +2,7 @@ import React from 'react'
 import s from './FriendsBlock.module.css'
 import pm from '../../Profile/Profile.module.css'
 import {NavLink} from "react-router-dom";
-import userPhoto from "../../../assets/images/user.png";
+import userPhoto from "../../../assets/images/upload_profile_photo.png";
 import cn from 'classnames'
 
 
@@ -16,7 +16,7 @@ export const ProfileFriendsBlock = ({totalUsersCount, users}) => {
                 <NavLink to={'/profile/' + u.id}>
                     <img className={s.friendPhoto} src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
                 </NavLink>
-                <div>{u.name}</div>
+                <div>{u.name.slice(0, 10)}</div>
             </div>).slice(-6)}
         </div>
     )
