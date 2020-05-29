@@ -1,11 +1,29 @@
-.friends img {
-    width: 90px;
-    height: 90px;
-    border-radius: 60px;
-    margin-top: 10px;
-    margin-right: 5px;
+.friendList {
+    display: grid;
+    grid-row-gap: 15px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    max-width: 550px;
+    margin: 15px 0;
 }
 
-.friend_row {
-    display: inline-block;
+.friendCount {
+    background-color: #fafbfc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 18px 15px;
+    border-bottom: 2px solid #5181b8;
+    border-radius: 4px 4px 0 0;
+}
+
+.totalUsers {
+    color: #939393;
+    margin-left: 5px;
+}
+
+.paginator {
+    justify-self: center;
+    padding-bottom: 10px;
 }
