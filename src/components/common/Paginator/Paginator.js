@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import cn from 'classnames'
 import s from "./Paginator.module.css";
+import arrow from "../../../assets/images/arrow-right-01-512.png"
 
 
 
-let Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+export const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
 
         let pages = []
@@ -18,22 +20,24 @@ let Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, portion
     let rightPortionPageNumber = portionNumber * portionSize
 
     return (
-        <div>
+        <div className={s.main}>
             { portionNumber > 1 &&
-            <button onClick={ () => { setPortionNumber(portionNumber - 1)}}>Prev</button>}
-                {pages
-                    .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
-                    .map((p) => {
-                        return <span className={currentPage === p && s.selectedPage}
-                                 key={p}
-                                 onClick={(e) => {
-                                     onPageChanged(p)
-                                 }}>{p}</span>
-                    })}
+            <button onClick={ () => { setPortionNumber(portionNumber - 1)}} className={s.btn}>
+                <img src={arrow} alt="" className={cn(s.arrowNext, s.arrowPrev)}/>
+            </button>}
+            {pages
+                .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
+                .map((p) => {
+                    return <span className={cn(currentPage === p && s.selectedPage, s.page)}
+                             key={p}
+                             onClick={(e) => {
+                                 onPageChanged(p)
+                             }}>{p}</span>
+                })}
             { portionCount > portionNumber &&
-            <button onClick={ () => {setPortionNumber(portionNumber + 1)}}>Next</button>}
+            <button onClick={ () => {setPortionNumber(portionNumber + 1)}} className={s.btn}>
+                <img src={arrow} alt="" className={s.arrowNext}/>
+            </button>}
         </div>
     )
 }
-
-export default Paginator
