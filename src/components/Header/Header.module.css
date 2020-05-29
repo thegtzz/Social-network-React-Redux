@@ -10,7 +10,6 @@
   width: 25px;
   border-radius: 15px;
   padding: 9px;
-  margin-left: 144px;
 }
 
 .header span {
@@ -23,6 +22,7 @@
 }
 
 .header a {
+  justify-self: center;
   text-decoration: none;
 }
 
