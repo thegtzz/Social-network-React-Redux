@@ -1,13 +1,15 @@
 import React from "react";
-import s from "../Dialogs.module.css";
+import avatar from "../../../assets/images/upload_profile_photo.png"
+import s from "./Message.module.css";
 
-const Message = (props) => {
+export const Message = (props) => {
     return (
         <div className={s.message}>
-            <img src="https://f0.pngfuel.com/png/592/884/black-and-white-cartoon-character-programmer-computer-programming-computer-software-computer-icons-programming-language-avatar-png-clip-art.png" alt=""/>
-            {props.message}
+            <img src={avatar} alt=""/>
+            <div>
+                <div className={s.peerName}>Vladislav</div>
+                {props.message}
+            </div>
         </div>
     )
 }
-
-export default Message

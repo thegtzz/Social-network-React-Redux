@@ -1,0 +1,21 @@
+.dialog {
+    display: grid;
+    align-items: center;
+}
+
+.dialog:hover {
+    border-left: 2px solid #5181b8;
+    color: #000;
+    font-weight: 700;
+    background-color: #f0f2f5;
+}
+
+.dialog a {
+    text-decoration: none;
+}
+
+.dialogName {
+    padding-left: 15px;
+    color: #000;
+    font-weight: 400;
+}

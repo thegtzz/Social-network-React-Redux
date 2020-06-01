@@ -1,0 +1,19 @@
+.message {
+    display: grid;
+    grid-template-columns: 40px 4fr;
+    align-items: center;
+    grid-gap: 10px;
+    margin: 0 10px 10px 30px;
+    color: #000000;
+}
+
+.peerName {
+    color: #42648b;
+    font-weight: 700;
+}
+
+.message img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
