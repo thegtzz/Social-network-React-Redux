@@ -1,11 +1,12 @@
 import React from "react";
 import s from './Dialogs.module.css'
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
-import {Redirect} from "react-router-dom";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
+import {Redirect, NavLink} from "react-router-dom";
 import {Field, Form} from "react-final-form";
 import {Element} from "../common/FormsControls/FormsControls";
 import {maxLengthCreator} from "../../utils/validators/validators";
+import avatar from "../../assets/images/upload_profile_photo.png"
 
 
 const Textarea = Element('textarea')
@@ -15,15 +16,19 @@ const DialogsForm = ({onSubmit}) => {
     return (
         <Form onSubmit={onSubmit}>
             {({handleSubmit, form}) => (
-                <form onSubmit={async (event) => {
-                        await handleSubmit(event)
-                        form.reset()
+                <form className={s.test} onSubmit={event => {
+                    handleSubmit(event)
+                    form.reset()
                 }}>
-                    <Field placeholder={"Type your message"} name={"DialogMessage"} component={Textarea}
-                            validate={maxLength50}/>
-                    <div>
-                        <button>Send message</button>
-                    </div>
+                    <Field placeholder={"Write a message..."} name={"DialogMessage"} component={Textarea}
+                            validate={maxLength50} onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                    handleSubmit(e)
+                                    form.reset()
+                                }
+                    }}/>
+
+                    <button className={s.btnSendMess}></button>
                 </form>
             )}
         </Form>
@@ -46,12 +51,22 @@ export const Dialogs = (props) => {
 
     return (
         <div className={s.dialogs}>
-            <div className={s.dialogItems}>
-                { dialogsElements }
-            </div>
             <div className={s.messages}>
+                <div className={s.chatHeader}>
+                    <div className={s.btnWrapDiv}>
+                        <NavLink to={'/dialogs'} className={s.btnBack}>Back</NavLink>
+                    </div>
+                    <div className={s.chatPeerName}>Vladislav Sviridov</div>
+                    <div className={s.lastSeen}>last seen yesterday at 9:14 pm</div>
+                    <div className={s.chatHeaderImg}>
+                        <img src={avatar} alt=""/>
+                    </div>
+                </div>
                 { messagesElements }
                 <DialogsForm onSubmit={onSubmit}/>
+            </div>
+            <div className={s.dialogSidebar}>
+                { dialogsElements }
             </div>
         </div>
     )
