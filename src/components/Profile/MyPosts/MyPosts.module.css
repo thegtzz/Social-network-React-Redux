@@ -11,29 +11,28 @@
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
     margin-top: 15px;
     font-size: 13px;
-    width: 540px;
+    max-width: 540px;
 }
 
 .postField {
     display: grid;
-    grid-template-areas: "img input";
+    /*grid-template-areas: "img input";*/
     grid-column-gap: 10px;
-    grid-template-rows: minmax(70px, auto);
-    width: 465px;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    /*max-width: 465px;*/
     padding: 15px 20px 10px 20px;
 }
 
 .postField img {
-    grid-area: img;
+    /*grid-area: img;*/
     width: 28px;
     height: 28px;
     border-radius: 50%;
 }
 
 .postField textarea {
-    grid-area: input;
+    /*grid-area: input;*/
     min-height: 60px;
-    width: 460px;
     border: 0;
     border-radius: 4px;
     line-height: 1.462;
@@ -72,6 +71,6 @@
     margin-top: 10px;
 }
 
-.wallPostBlock {
-    grid-column-start: 2;
-}
+/*.wallPostBlock {*/
+/*    grid-column-start: 2;*/
+/*}*/

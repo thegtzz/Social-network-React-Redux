@@ -1,10 +1,7 @@
 .friendsBlock {
-    grid-row-start: 2;
     display: grid;
-    grid-template-rows: 25px 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: "f-count f-count f-count";
-    grid-row-gap: 10px;
+    grid-gap: 10px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
@@ -18,7 +15,7 @@
 }
 
 .friendCell {
-    font-size: 11px;
+    font-size: 1em;
     justify-self: center;
 }
 
@@ -32,7 +29,8 @@
 }
 
 .friendPhoto {
-    width: 50px;
-    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 50%;
 }
+

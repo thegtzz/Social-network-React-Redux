@@ -1,5 +1,6 @@
 .wallPostInfo {
-    width: 500px;
+    display: grid;
+    max-width: 500px;
     padding: 10px 20px;
     margin-top: 15px;
     background: #fff;
@@ -9,15 +10,22 @@
     font-size: 13px;
 }
 
+.wallPostHeaderWrap {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: repeat(2, 25px);
+    grid-column-gap: 10px;
+}
+
 .wallPostImage {
+    grid-row: span 2;
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
 .wallPostHeaderInfo {
-    display: inline-block;
-    margin: 5px 0 0 10px;
+    margin: 5px 0 0;
     color: #2a5885;
     font-weight: 500;
     font-size: 14px;
@@ -25,10 +33,6 @@
 }
 
 .wallPostHeaderDate {
-    display: inline-block;
-    position: relative;
-    right: 85px;
-    bottom: 13px;
     color: #939393;
     font-size: 12.5px;
     padding-top: 3px;

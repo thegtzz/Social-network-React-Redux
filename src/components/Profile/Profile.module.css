@@ -1,20 +1,20 @@
 .mainContent {
     display: grid;
-    grid-template-columns: 230px auto;
+    grid-template-columns: 225px auto;
     grid-template-areas: "mainPhoto info"
                          "friends info"
                          "friends sendPost"
                          "friends wallPosts";
     grid-column-gap: 15px;
 }
-
 .mainPhoto {
     grid-area: mainPhoto;
+    max-width: 200px;
 }
 
 .mainInfo {
     grid-area: info;
-    width: 510px;
+    max-width: 510px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
@@ -25,7 +25,8 @@
 
 .friends {
     grid-area: friends;
-    height: 200px;
+    max-width: 210px;
+    max-height: 200px;
 }
 
 .sendPost {

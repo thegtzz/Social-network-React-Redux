@@ -6,7 +6,7 @@ const Post = (props) => {
 
     return (
         <div className={s.wallPostInfo}>
-            <div>
+            <div className={s.wallPostHeaderWrap}>
                 <img className={s.wallPostImage} src={props.profile.photos.large} alt=""/>
                 <div className={s.wallPostHeaderInfo}>{props.profile.fullName}</div>
                 <div className={s.wallPostHeaderDate}>1 May 2020</div>
