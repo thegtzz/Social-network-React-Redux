@@ -7,6 +7,7 @@ import {Field, Form} from "react-final-form";
 import {Element} from "../common/FormsControls/FormsControls";
 import {maxLengthCreator} from "../../utils/validators/validators";
 import avatar from "../../assets/images/upload_profile_photo.png"
+import {DialogDropupMenu} from "./DialogDropupMenu/DialogDropupMenu";
 
 
 const Textarea = Element('textarea')
@@ -16,10 +17,11 @@ const DialogsForm = ({onSubmit}) => {
     return (
         <Form onSubmit={onSubmit}>
             {({handleSubmit, form}) => (
-                <form className={s.test} onSubmit={event => {
+                <form className={s.dialogForm} onSubmit={event => {
                     handleSubmit(event)
                     form.reset()
                 }}>
+                    <DialogDropupMenu/>
                     <Field placeholder={"Write a message..."} name={"DialogMessage"} component={Textarea}
                             validate={maxLength50} onKeyDown={e => {
                                 if (e.key === 'Enter') {
@@ -66,6 +68,9 @@ export const Dialogs = (props) => {
                 <DialogsForm onSubmit={onSubmit}/>
             </div>
             <div className={s.dialogSidebar}>
+                <div className={s.openedDialogs}>
+                    <span>Opened dialogs</span>
+                </div>
                 { dialogsElements }
             </div>
         </div>

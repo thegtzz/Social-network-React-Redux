@@ -87,7 +87,6 @@
   padding: 4px 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   transition: opacity 100ms linear,top 100ms linear,visibility 100ms linear;
-  z-index: 800;
 }
 
 .topDroppedMenu:after,
