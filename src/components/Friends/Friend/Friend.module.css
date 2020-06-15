@@ -1,6 +1,6 @@
 .friendItem {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr 30px;
     grid-template-rows: 1fr 1fr;
     margin-left: 10px;
     margin-right: 25px;
@@ -30,6 +30,7 @@
 }
 
 .followUser {
+    grid-row: 2;
     padding-left: 15px;
 }
 
@@ -43,3 +44,53 @@
     cursor: pointer;
 }
 
+.friendMenuWrap {
+    cursor: pointer;
+}
+
+.friendMenu {
+    width: 22px;
+    height: 4px;
+    margin: 10px 0;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAICAYAAAD0g6+qAAAATklEQVQoz2NYse245+odJx+DMIjNgARIkgNzdp76D8ZANrJikuSoZhDVvDZ54U7PSYv3PAZhEBtZMUlyYMbiPf9BGMRGVkySHNUMopbXAKLSDnCjcfmIAAAAAElFTkSuQmCC) 50% 0 no-repeat;
+    outline: none;
+    display: block;
+    position: relative;
+}
+
+.friendMenuContent {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    top: 10px;
+    right: -35px;
+    border: 1px solid #c5d0db;
+    padding: 4px 0;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.friendMenuContent a {
+    font-size: 0.9em;
+    color: #2a5885;
+    padding: 6px 16px;
+    text-decoration: none;
+}
+
+.friendMenuContent a:hover {
+    background-color: #e5ebf1;
+}
+
+.friendMenuWrap:hover .friendMenuContent {
+    display: grid;
+}
+
+.separator {
+    margin-top: 9px;
+    margin-left: 10px;
+    margin-right: 25px;
+    padding-top: 9px;
+    border-top: 1px solid #dfe2e8;
+}

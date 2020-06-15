@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import userPhoto from "../../../assets/images/upload_profile_photo.png";
 
 
-const Friend = (props) => {
+export const Friend = props => {
     let u = props.user
     return (
         <div key={u.id} className={s.friendItem}>
@@ -27,8 +27,22 @@ const Friend = (props) => {
                               className={s.btnFollow}>
                         Follow</button>}
             </div>
+            <div className={s.friendMenuWrap}>
+                <div className={s.friendMenu}>
+                    <div className={s.friendMenuContent}>
+                        <NavLink to=''>
+                            <span>Show friends</span>
+                        </NavLink>
+                        <NavLink to=''>
+                            <span>Suggest friends</span>
+                        </NavLink>
+                        <div className={s.separator}/>
+                        <NavLink to=''>
+                            <span>Edit friend lists</span>
+                        </NavLink>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
-
-export default Friend

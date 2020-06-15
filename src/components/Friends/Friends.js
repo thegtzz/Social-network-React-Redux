@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Friends.module.css";
 import {Paginator} from "../common/Paginator/Paginator";
-import Friend from "./Friend/Friend";
+import {Friend} from "./Friend/Friend";
 
 
 let Friends = ({totalUsersCount, currentPage, onPageChanged, pageSize, ...props}) => {
