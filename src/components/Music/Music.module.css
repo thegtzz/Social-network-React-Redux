@@ -9,56 +9,6 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-.navMusic {
-    display: flex;
-    align-items: center;
-    background-color: #fafbfc;
-    border-bottom: 1px solid #edeef0;
-    border-radius: 10px 10px 0 0;
-    user-select: none;
-}
-
-.liWrapper {
-    line-height: 60px;
-    cursor: pointer;
-}
-
-.navMusic li {
-    list-style: none;
-    padding: 0 15px;
-    color: #656565;
-}
-
-.liWrapper:hover li {
-    line-height: 58px;
-    color: #000000;
-    border-bottom: 2px solid #5181b8;
-}
-
-.searchBar {
-    display: flex;
-    padding: 10px 15px;
-}
-
-.btnSearch {
-    background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20height%3D%2224%22%20viewBox%3D%221284%20207%2024%2024%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m1298.5%20222.9c-1%20.7-2.2%201.1-3.5%201.1-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206c0%201.3-.4%202.5-1.1%203.5l2.8%202.7c.3.4.4%201.1%200%201.5-.4.3-1.1.3-1.5%200zm-3.5-.9c2.2%200%204-1.8%204-4s-1.8-4-4-4-4%201.8-4%204%201.8%204%204%204z%22%20fill%3D%22%239299A6%22%2F%3E%3C%2Fsvg%3E) #f0f2f5 no-repeat 50%;
-    width: 60px;
-    height: 36px;
-    outline: none;
-    border: 1px solid #d3d9de;
-    border-radius: 0 2px 2px 0;
-    cursor: pointer;
-}
-
-.searchInput {
-    width: 100%;
-    height: 32px;
-    border: 1px solid #d3d9de;
-    border-right: none;
-    border-radius: 2px 0 0 2px;
-    outline: none;
-    padding-left: 10px;
-}
 
 .playlist {
     display: grid;
@@ -66,41 +16,5 @@
     padding: 0 15px 15px;
 }
 
-.tracks {
-    border-right: 1px solid #e7e8ec;
-}
 
-.friendMusic {
-    padding-left: 15px;
-}
 
-.trackBlock {
-    display: grid;
-    grid-template-areas: "name name" "image track";
-    grid-gap: 8px;
-    grid-template-columns: minmax(35px, 35px) minmax(250px, 290px);
-    margin-bottom: 15px;
-}
-
-.trackBlock:last-child {
-    margin-bottom: 0;
-}
-
-audio {
-    grid-area: track;
-    width: 250px;
-    height: 35px;
-    outline: none;
-}
-
-.trackName {
-    grid-area: name;
-    color: #828282;
-}
-
-.image {
-    grid-area: image;
-    width: 35px;
-    height: 35px;
-    border-radius: 10px;
-}

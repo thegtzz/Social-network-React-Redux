@@ -1,0 +1,34 @@
+.tracks {
+    border-right: 1px solid #e7e8ec;
+}
+
+.trackBlock {
+    display: grid;
+    grid-template-areas: "name name" "image track";
+    grid-gap: 8px;
+    grid-template-columns: minmax(35px, 35px) minmax(250px, 290px);
+    margin-bottom: 15px;
+}
+
+.trackBlock:last-child {
+    margin-bottom: 0;
+}
+
+audio {
+    grid-area: track;
+    width: 250px;
+    height: 35px;
+    outline: none;
+}
+
+.trackName {
+    grid-area: name;
+    color: #828282;
+}
+
+.image {
+    grid-area: image;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+}
