@@ -2,8 +2,7 @@ import React from "react";
 import s from './Post.module.css'
 
 
-const Post = (props) => {
-
+export const Post = props => {
     return (
         <div className={s.wallPostInfo}>
             <div className={s.wallPostHeaderWrap}>
@@ -21,5 +20,3 @@ const Post = (props) => {
         </div>
     )
 }
-
-export default Post

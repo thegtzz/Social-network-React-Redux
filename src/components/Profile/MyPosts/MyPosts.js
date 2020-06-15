@@ -2,7 +2,7 @@ import React from "react";
 import s from './MyPosts.module.css'
 import pm from '../Profile.module.css'
 import cn from 'classnames'
-import Post from "./Post/Post";
+import {Post} from "./Post/Post";
 import {Form, Field} from "react-final-form";
 import {maxLengthCreator} from "../../../utils/validators/validators";
 import {Element} from "../../common/FormsControls/FormsControls";
