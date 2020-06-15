@@ -16,22 +16,19 @@
 
 .postField {
     display: grid;
-    /*grid-template-areas: "img input";*/
     grid-column-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-    /*max-width: 465px;*/
+    grid-template-columns: minmax(30px, 30px) minmax(30px, 1fr);
     padding: 15px 20px 10px 20px;
 }
 
 .postField img {
-    /*grid-area: img;*/
     width: 28px;
     height: 28px;
     border-radius: 50%;
 }
 
 .postField textarea {
-    /*grid-area: input;*/
+    width: 100%;
     min-height: 60px;
     border: 0;
     border-radius: 4px;
@@ -70,7 +67,3 @@
 .posts {
     margin-top: 10px;
 }
-
-/*.wallPostBlock {*/
-/*    grid-column-start: 2;*/
-/*}*/
