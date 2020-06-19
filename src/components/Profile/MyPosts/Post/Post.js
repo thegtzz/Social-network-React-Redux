@@ -1,5 +1,6 @@
 import React from "react";
 import s from './Post.module.css'
+import {LikesCounter} from "../../../common/LikesCounter/LikesCounter";
 
 
 export const Post = props => {
@@ -14,7 +15,7 @@ export const Post = props => {
                 { props.message }
             </div>
             <div className={s.wallPostLikeWrap}>
-                <div className={s.wallPostLikes}>42</div>
+                <LikesCounter/>
                 <div className={s.wallPostViews}>42</div>
             </div>
         </div>

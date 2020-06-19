@@ -2,6 +2,7 @@ import React from "react";
 import s from "./NewsPost.module.css";
 import ps from "../../Profile/MyPosts/Post/Post.module.css";
 import userPhoto from "../../../assets/images/upload_profile_photo.png";
+import {LikesCounter} from "../../common/LikesCounter/LikesCounter";
 
 
 export const NewsPost = () => {
@@ -32,7 +33,7 @@ export const NewsPost = () => {
                      alt=""/>
             </div>
             <div className={ps.wallPostLikeWrap}>
-                <div className={ps.wallPostLikes}>42</div>
+                <LikesCounter/>
                 <div className={s.wallPostComment}/>
                 <div className={ps.wallPostViews}>42</div>
             </div>
