@@ -58,6 +58,7 @@
     color: #909399;
     overflow: hidden;
     white-space: nowrap;
+    margin-right: 10px;
 }
 
 .wallPostLikes::before {
