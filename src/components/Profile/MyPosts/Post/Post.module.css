@@ -60,6 +60,10 @@
     cursor: pointer;
 }
 
+.wallPostLikes:hover {
+    opacity: 1;
+}
+
 .wallPostViews {
     display: flex;
     -ms-flex-align: center;
