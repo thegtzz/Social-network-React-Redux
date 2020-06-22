@@ -30,7 +30,7 @@ const DialogsForm = ({onSubmit}) => {
                                 }
                     }}/>
 
-                    <button className={s.btnSendMess}></button>
+                    <button className={s.btnSendMess}/>
                 </form>
             )}
         </Form>
