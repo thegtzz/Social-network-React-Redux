@@ -1,11 +1,53 @@
-import React from "react";
+import React, {useState} from "react";
+import {Field, Form} from "react-final-form";
 import s from "./NewsPost.module.css";
 import ps from "../../Profile/MyPosts/Post/Post.module.css";
 import userPhoto from "../../../assets/images/upload_profile_photo.png";
 import {LikesCounter} from "../../common/LikesCounter/LikesCounter";
+import {DialogDropupMenu} from "../../Dialogs/DialogDropupMenu/DialogDropupMenu";
+import {Element} from "../../common/FormsControls/FormsControls";
+import {maxLengthCreator} from "../../../utils/validators/validators";
+
+
+const Textarea = Element('textarea')
+const maxLength500 = maxLengthCreator(500)
+
+const NewsPostForm = ({onSubmit}) => {
+    return <>
+        <div className={s.separator}/>
+        <Form onSubmit={onSubmit}>
+            {({handleSubmit, form}) => (<form className={s.NewsPostForm} onSubmit={event => {
+                    handleSubmit(event)
+                    form.reset()
+                }}>
+                    <DialogDropupMenu/>
+                    <Field placeholder={"Leave a comment..."} name={"NewsPost"} component={Textarea}
+                            validate={maxLength500} onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                    handleSubmit(e)
+                                    form.reset()
+                                }
+                    }}/>
+
+                    <button className={s.btnSendPost}/>
+                </form>
+            )}
+        </Form>
+    </>
+}
 
 
 export const NewsPost = () => {
+    const [commented, setCommented] = useState(false)
+
+    const handleComment = () => {
+        setCommented(true)
+    }
+
+    const onSubmit = text => {
+        console.log(text)
+    }
+
     return (
         <div className={s.newsPost}>
             <div className={ps.wallPostHeaderWrap}>
@@ -34,9 +76,10 @@ export const NewsPost = () => {
             </div>
             <div className={ps.wallPostLikeWrap}>
                 <LikesCounter/>
-                <div className={s.wallPostComment}/>
+                <div className={s.wallPostComment} onClick={handleComment}/>
                 <div className={ps.wallPostViews}>42</div>
             </div>
+            {commented && <NewsPostForm onSubmit={onSubmit}/>}
         </div>
     )
 }
