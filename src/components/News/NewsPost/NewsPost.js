@@ -7,6 +7,9 @@ import {LikesCounter} from "../../common/LikesCounter/LikesCounter";
 import {DialogDropupMenu} from "../../Dialogs/DialogDropupMenu/DialogDropupMenu";
 import {Element} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator} from "../../../utils/validators/validators";
+import {useDispatch, useSelector} from "react-redux";
+import {addNewsPostActionCreator} from "../../../redux/newsComment-reducer";
+import {Comment} from "../NewsPostComment/Comment";
 
 
 const Textarea = Element('textarea')
@@ -21,7 +24,7 @@ const NewsPostForm = ({onSubmit}) => {
                     form.reset()
                 }}>
                     <DialogDropupMenu/>
-                    <Field placeholder={"Leave a comment..."} name={"NewsPost"} component={Textarea}
+                    <Field placeholder={"Leave a comment..."} name={"NewsPostComment"} component={Textarea}
                             validate={maxLength500} onKeyDown={e => {
                                 if (e.key === 'Enter') {
                                     handleSubmit(e)
@@ -37,15 +40,18 @@ const NewsPostForm = ({onSubmit}) => {
 }
 
 
-export const NewsPost = () => {
+export const NewsPost = props => {
     const [commented, setCommented] = useState(false)
 
     const handleComment = () => {
         setCommented(true)
     }
 
-    const onSubmit = text => {
-        console.log(text)
+    const state = useSelector(state => state.newsPostComment)
+    const dispatch = useDispatch()
+
+    const onSubmit = formData => {
+        dispatch(addNewsPostActionCreator(formData.NewsPostComment))
     }
 
     return (
@@ -78,6 +84,9 @@ export const NewsPost = () => {
                 <LikesCounter/>
                 <div className={s.wallPostComment} onClick={handleComment}/>
                 <div className={ps.wallPostViews}>42</div>
+            </div>
+            <div>
+                {state.comments.map(comment => <Comment key={comment.id} commentBody={comment.commentBody}/>)}
             </div>
             {commented && <NewsPostForm onSubmit={onSubmit}/>}
         </div>
