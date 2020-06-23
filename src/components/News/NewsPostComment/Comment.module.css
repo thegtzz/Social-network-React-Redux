@@ -1,0 +1,28 @@
+.comment {
+    display: grid;
+    grid-template-columns: minmax(20px, 45px) minmax(100px, 1fr);
+    grid-template-rows: minmax(10px, 20px) minmax(20px, 1fr) minmax(10px, 20px);
+    border-top: 1px solid #dfe2e8;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.avatar {
+    grid-row: span 3;
+    max-width: 34px;
+    max-height: 34px;
+    border-radius: 50%;
+}
+
+.name {
+    grid-column: 2;
+    font-weight: 500;
+    color: #2a5885;
+}
+
+.date {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 0.8rem;
+    color: #939393;
+}
