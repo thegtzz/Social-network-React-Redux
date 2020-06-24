@@ -1,0 +1,22 @@
+.friendSearch {
+    display: flex;
+    max-height: 45px;
+    border-bottom: 1px solid #dfe2e8;
+    padding: 0 30px 10px 15px;
+}
+
+.friendSearch input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.btnSearch {
+    background: url(https://vk.com/images/search_icon.png) no-repeat;
+    width: 30px;
+    height: 26px;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
