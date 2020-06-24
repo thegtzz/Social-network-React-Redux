@@ -15,8 +15,16 @@
 }
 
 .friendCell {
-    font-size: 1em;
+    display: grid;
+}
+
+.friendCell a {
     justify-self: center;
+}
+
+.name {
+    justify-self: center;
+    font-size: 0.7rem;
 }
 
 .totalUsers {

@@ -16,7 +16,7 @@ export const ProfileFriendsBlock = ({totalUsersCount, users}) => {
                 <NavLink to={'/profile/' + u.id}>
                     <img className={s.friendPhoto} src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
                 </NavLink>
-                <div>{u.name.slice(0, 10)}</div>
+                <div className={s.name}>{u.name.slice(0, 10)}</div>
             </div>).slice(-6)}
         </div>
     )
