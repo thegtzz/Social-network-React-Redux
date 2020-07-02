@@ -31,7 +31,6 @@
 
 .sendPost {
     grid-area: sendPost;
-    height: 150px;
 }
 
 .wallPosts {
