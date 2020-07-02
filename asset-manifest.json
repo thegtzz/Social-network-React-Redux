@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Social-network-React-Redux/static/css/main.2d8bd992.chunk.css",
-    "main.js": "/Social-network-React-Redux/static/js/main.6ab7bf09.chunk.js",
-    "main.js.map": "/Social-network-React-Redux/static/js/main.6ab7bf09.chunk.js.map",
+    "main.css": "/Social-network-React-Redux/static/css/main.0e7d67e1.chunk.css",
+    "main.js": "/Social-network-React-Redux/static/js/main.24eb89a8.chunk.js",
+    "main.js.map": "/Social-network-React-Redux/static/js/main.24eb89a8.chunk.js.map",
     "runtime-main.js": "/Social-network-React-Redux/static/js/runtime-main.7ad40740.js",
     "runtime-main.js.map": "/Social-network-React-Redux/static/js/runtime-main.7ad40740.js.map",
     "static/js/2.f4c602ac.chunk.js": "/Social-network-React-Redux/static/js/2.f4c602ac.chunk.js",
@@ -14,11 +14,11 @@
     "static/js/4.e5eb6571.chunk.js": "/Social-network-React-Redux/static/js/4.e5eb6571.chunk.js",
     "static/js/4.e5eb6571.chunk.js.map": "/Social-network-React-Redux/static/js/4.e5eb6571.chunk.js.map",
     "index.html": "/Social-network-React-Redux/index.html",
-    "precache-manifest.66e24938da629113c0eaebf1a31abd72.js": "/Social-network-React-Redux/precache-manifest.66e24938da629113c0eaebf1a31abd72.js",
+    "precache-manifest.5afe2825148ab5a97e6fc570eb7802dd.js": "/Social-network-React-Redux/precache-manifest.5afe2825148ab5a97e6fc570eb7802dd.js",
     "service-worker.js": "/Social-network-React-Redux/service-worker.js",
     "static/css/3.c4a175bb.chunk.css.map": "/Social-network-React-Redux/static/css/3.c4a175bb.chunk.css.map",
     "static/css/4.049c144d.chunk.css.map": "/Social-network-React-Redux/static/css/4.049c144d.chunk.css.map",
-    "static/css/main.2d8bd992.chunk.css.map": "/Social-network-React-Redux/static/css/main.2d8bd992.chunk.css.map",
+    "static/css/main.0e7d67e1.chunk.css.map": "/Social-network-React-Redux/static/css/main.0e7d67e1.chunk.css.map",
     "static/js/2.f4c602ac.chunk.js.LICENSE.txt": "/Social-network-React-Redux/static/js/2.f4c602ac.chunk.js.LICENSE.txt",
     "static/media/Scorpions - Send Me An Angel.mp3": "/Social-network-React-Redux/static/media/Scorpions - Send Me An Angel.3573be81.mp3",
     "static/media/Scorpions - Still Loving You.mp3": "/Social-network-React-Redux/static/media/Scorpions - Still Loving You.ca508b5b.mp3",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.7ad40740.js",
     "static/js/2.f4c602ac.chunk.js",
-    "static/css/main.2d8bd992.chunk.css",
-    "static/js/main.6ab7bf09.chunk.js"
+    "static/css/main.0e7d67e1.chunk.css",
+    "static/js/main.24eb89a8.chunk.js"
   ]
 }
