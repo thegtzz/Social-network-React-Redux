@@ -12,7 +12,9 @@ export const Comment = ({ commentBody }) => {
             <img className={s.avatar} src={userPhoto} alt=""/>
             <div className={s.name}>Yan Lukovsky</div>
             <div>{commentBody}</div>
-            <div className={s.date}>{today.toLocaleString('en-GB', date)} at {today.toLocaleString('en-GB', hour)}</div>
+            <div className={s.date}>
+                {today.toLocaleString('en-GB', date)} at {today.toLocaleString('en-GB', hour)}
+            </div>
         </div>
     )
 }
