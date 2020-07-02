@@ -19,18 +19,19 @@ export const LoginElement = (props) => {
 
     return (
         <div ref={ref} className={s.loginBlock} onClick={handleClick}>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
                 <div className={s.userName}>{props.login}</div>
                 <img src={props.profile.profile.photos.small || userImage} alt=''/>
-                <div className={s.loginBlockArrow}></div>
+                <div className={s.loginBlockArrow} />
             </a>
             {showMenu
                 && <div className={s.topDroppedMenu}>
                     <NavLink to={'/profile'}>My profile</NavLink>
-                    <div className={s.topDivSep}></div>
+                    <div className={s.topDivSep} />
                     <NavLink to={'/settings'}>Settings</NavLink>
                     <NavLink to={'/help'}>Help</NavLink>
-                    <div className={s.topDivSep}></div>
+                    <div className={s.topDivSep} />
                     <div onClick={props.logOut}>
                         <NavLink to={'/login'}>Log out</NavLink>
                     </div>
