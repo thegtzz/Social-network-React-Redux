@@ -1,11 +1,20 @@
 import React, {useState} from "react";
-import cn from 'classnames'
+import cn from "classnames"
 import s from "./Paginator.module.css";
 import arrow from "../../../assets/images/arrow-right-01-512.png"
 
 
+type PropsType = {
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    portionSize?: number
+}
 
-export const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+export const Paginator: React.FC<PropsType> = ({totalUsersCount, pageSize,
+                                               currentPage, onPageChanged,
+                                               portionSize = 10}) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
 
         let pages = []

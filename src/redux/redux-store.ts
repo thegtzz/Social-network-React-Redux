@@ -5,24 +5,28 @@ import sidebarReducer from "./sidebar-reducer";
 import friendsReducer from "./friends-reducer";
 import authReducer from './auth-reducer'
 import thunkMiddleWare from 'redux-thunk'
-import {reducer as formReducer} from 'redux-form'
+// import {reducer as formReducer} from 'redux-form'
 import appReducer from "./app-reducer";
 import {newsCommentReducer} from "./newsComment-reducer";
 
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sidebarReducer,
     friendsPage: friendsReducer,
     newsPostComment: newsCommentReducer,
     auth: authReducer,
-    form: formReducer,
+    // form: formReducer,
     app: appReducer,
 })
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleWare))
+type RootReducerType = typeof rootReducer
+export type AppStateType = ReturnType<RootReducerType>
 
+let store = createStore(rootReducer, applyMiddleware(thunkMiddleWare))
+
+// @ts-ignore
 window.store = store
 
 export default store

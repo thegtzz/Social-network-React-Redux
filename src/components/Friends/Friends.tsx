@@ -3,20 +3,35 @@ import s from "./Friends.module.css";
 import {Paginator} from "../common/Paginator/Paginator";
 import {Friend} from "./Friend/Friend";
 import {FriendSearch} from "./FriendSearch/FriendSearch";
+import {UserType} from "../../types/types";
 
 
-let Friends = ({totalUsersCount, currentPage, onPageChanged, pageSize, ...props}) => {
+type PropsType = {
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    users: Array<UserType>
+    followingInProgress: Array<number>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+}
+
+export const Friends: React.FC<PropsType> = ({totalUsersCount,
+                                                 currentPage, onPageChanged,
+                                                 pageSize, users,
+                                                 ...props}) => {
     const [search, setSearch] = useState('')
 
-    const SearchHandler = search => {
+    const SearchHandler = (search: string) => {
         setSearch(search)
     }
 
     const getFilteredData = () => {
         if(!search) {
-            return props.users
+            return users
         }
-        return props.users.filter(item => {
+        return users.filter(item => {
             return item['name'].toLowerCase().includes(search.toLowerCase())
         })
     }
@@ -46,5 +61,3 @@ let Friends = ({totalUsersCount, currentPage, onPageChanged, pageSize, ...props}
         </div>
     )
 }
-
-export default Friends
