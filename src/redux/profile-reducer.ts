@@ -51,6 +51,8 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
     }
 }
 
+type ActionsTypes = addPostActionCreatorType | deletePostType | setUserProfileType | setStatusType | savePhotoSuccessType
+
 type addPostActionCreatorType = {
     type: typeof ADD_POST
     PostText: string

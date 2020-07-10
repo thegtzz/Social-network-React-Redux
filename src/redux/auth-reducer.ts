@@ -1,4 +1,4 @@
-import {authAPI, securityAPI} from "../api/api";
+import {authAPI, ResultCodeForCaptcha, ResultCodesEnum, securityAPI} from "../api/api";
 
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -29,6 +29,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
+// type ActionsTypes = setAuthUserDataActionPayloadType | setAuthUserDataActionType | getCaptchaUrlSuccessActionType
 type setAuthUserDataActionPayloadType = {
     userId: number | null
     email: string | null
@@ -40,22 +41,22 @@ type setAuthUserDataActionType = {
     type: typeof SET_USER_DATA,
     payload: setAuthUserDataActionPayloadType
 }
-
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): setAuthUserDataActionType => ({type: SET_USER_DATA,
     payload: {userId, email, login, isAuth}})
-
 
 type getCaptchaUrlSuccessActionType = {
     type: typeof GET_CAPTCHA_URL_SUCCESS,
     payload: { captchaUrl: string }
 }
-
 export const getCaptchaUrlSuccess = (captchaUrl: string): getCaptchaUrlSuccessActionType => ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}})
 
 
+// type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
 export const getAuthUserData = () => async (dispatch: any) => {
     let data = await authAPI.authMe()
-    if (data.resultCode === 0) {
+
+    if (data.resultCode === ResultCodesEnum.Success) {
         let {id, email, login} = data.data
         dispatch(setAuthUserData(id, email, login, true))
     }
@@ -63,13 +64,14 @@ export const getAuthUserData = () => async (dispatch: any) => {
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
     let data = await authAPI.login(email, password, rememberMe, captcha)
 
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if (data.resultCode === 10) {
+        if (data.resultCode === ResultCodeForCaptcha.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
         let message = data.messages.length > 0 ? data.messages[0] : "Some error"
+        alert(message)
         // dispatch(stopSubmit("login", {_error: message}))
     }
 }
