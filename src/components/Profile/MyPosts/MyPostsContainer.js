@@ -1,4 +1,4 @@
-import {addPostActionCreator} from "../../../redux/profile-reducer";
+import {actions} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 import {getFriends, getTotalUsersCount} from "../../../redux/friends-selectors";
@@ -17,7 +17,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: (text) => {dispatch(addPostActionCreator(text))},
+        addPost: (text) => {dispatch(actions.addPostActionCreator(text))},
         getUsers: requestUsers
     }
 }
