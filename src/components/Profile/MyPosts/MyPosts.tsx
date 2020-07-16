@@ -8,19 +8,25 @@ import {Element} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator} from "../../../utils/validators/validators";
 import {Post} from "./Post/Post";
 import {ProfileFriendsBlock} from "../../Friends/ProfileFriendsBlock/ProfileFriendsBlock";
+import {PostType, ProfileType, UserType} from "../../../types/types";
 
 
 const Textarea = Element('textarea')
 const maxLength2000 = maxLengthCreator(2000)
 
-const MyPostsForm = ({profile, onSubmit}) => {
+type MyPostsFormOwnProps = {
+    onSubmit: (formData: MyPostsFormValuesType) => void
+    profile: ProfileType
+}
+
+const MyPostsForm: React.FC<MyPostsFormOwnProps> = ({profile, onSubmit}) => {
     useEffect(() => {
         let textarea = document.querySelector('textarea')
-        textarea.addEventListener('input', function () {
+        textarea?.addEventListener('input', function () {
             this.style.height = 'auto'
             this.style.height = this.scrollHeight + 'px'
         })
-        textarea.style.height = 'auto'
+        textarea!.style.height = 'auto'
     })
 
     return (
@@ -49,11 +55,24 @@ const MyPostsForm = ({profile, onSubmit}) => {
     )
 }
 
-export const MyPosts = (props) => {
+export type MapPropsType = {
+    posts: Array<PostType>
+    profile: ProfileType
+    totalUsersCount: number
+    users: UserType[]
+}
+export type DispatchPropsType = {
+    addPost: (PostMessage: string) => void
+}
+type MyPostsFormValuesType = {
+    PostMessage: string
+}
+
+export const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
     let postsElements = props.posts.map( p => <Post message={p.message}
                                                     profile={props.profile}
                                                     key={p.id}/>)
-    const onSubmit = formData => {
+    const onSubmit = (formData: MyPostsFormValuesType) => {
         props.addPost(formData.PostMessage)
     }
 

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
+import {connect, Provider} from "react-redux";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import {News} from "./components/News/News";
@@ -8,15 +9,21 @@ import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import Login from "./components/Login/Login";
-import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
-import store from "./redux/redux-store";
+import store, {AppStateType} from "./redux/redux-store";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
 const FriendsContainer = React.lazy(() => import("./components/Friends/FriendsContainer"))
 
-const App = props => {
+type PropsType = {
+    initializeApp: () => void
+}
+
+type MapPropsType = ReturnType<typeof mapStateToProps>
+
+
+const App: React.FC<PropsType & MapPropsType> = props => {
     useEffect(() => {
         props.initializeApp()
     })
@@ -47,14 +54,14 @@ const App = props => {
     );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized
 })
 
 const AppContainer = connect(mapStateToProps, {initializeApp})(App);
 
 
-export const MainApp = (props) => {
+export const MainApp: React.FC = () => {
     return <BrowserRouter>
         <Provider store={store}>
             <AppContainer/>

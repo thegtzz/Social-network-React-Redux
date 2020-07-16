@@ -79,4 +79,4 @@ export default compose(
         mapStateToProps,
         {follow, unfollow, getUsers: requestUsers}),
     withAuthRedirect
-)(FriendsContainer)
+)(FriendsContainer) as React.ComponentType

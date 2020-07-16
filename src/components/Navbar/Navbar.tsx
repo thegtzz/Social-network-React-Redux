@@ -9,7 +9,7 @@ import MusicIcon from '@vkontakte/icons/dist/24/music';
 import SettingsIcon from '@vkontakte/icons/dist/24/settings';
 
 
-const Navbar = (props) => {
+const Navbar: React.FC = (props) => {
     return <nav className={s.nav}>
             <NavLink to='/profile' className={s.navlinkgrid}>
                 <ProfileIcon className={s.leftIcon}/>
@@ -31,7 +31,7 @@ const Navbar = (props) => {
                 <MusicIcon className={s.leftIcon}/>
                 <span className={s.leftLabel}>Music</span>
             </NavLink>
-            <div className={s.separateDiv}></div>
+            <div className={s.separateDiv}/>
             <NavLink to='/settings' className={s.navlinkgrid}>
                 <SettingsIcon className={s.leftIcon}/>
                 <span className={s.leftLabel}>Settings</span>

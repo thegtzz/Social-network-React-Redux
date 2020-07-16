@@ -10,11 +10,10 @@ let initialState = {
         {id: 3, message: 'It\'s my second post.', likesCount: 11},
         {id: 4, message: 'Go on rolling.', likesCount: 11},
     ] as Array<PostType>,
-    newPostText: '',
     profile: null as ProfileType | null,
     status: ''
 }
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
@@ -24,7 +23,6 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
             return {
                 ...state,
                 posts: [...state.posts, {id: 5, message: action.PostText, likesCount: 0}],
-                newPostText: ''
             }
         }
 

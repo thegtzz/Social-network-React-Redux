@@ -2,27 +2,33 @@ import React from "react";
 import s from "./Friend.module.css";
 import {NavLink} from "react-router-dom";
 import userPhoto from "../../../assets/images/upload_profile_photo.png";
+import {UserType} from "../../../types/types";
 
 
-export const Friend = props => {
-    let u = props.user
+type PropsType = {
+    user: UserType
+    followingInProgress: Array<number>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+}
+export const Friend: React.FC<PropsType> = ({user, followingInProgress, follow, unfollow}) => {
     return (
-        <div key={u.id} className={s.friendItem}>
-            <NavLink to={'/profile/' + u.id} className={s.navImg}>
-                <img src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
+        <div key={user.id} className={s.friendItem}>
+            <NavLink to={'/profile/' + user.id} className={s.navImg}>
+                <img src={user.photos.small != null ? user.photos.small : userPhoto} alt=""/>
             </NavLink>
-            <div className={s.fullname}>{u.name}</div>
+            <div className={s.fullname}>{user.name}</div>
             <div className={s.followUser}>
-                {u.followed
-                    ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                {user.followed
+                    ? <button disabled={followingInProgress.some(id => id === user.id)}
                               onClick={() => {
-                                  props.unfollow(u.id)
+                                  unfollow(user.id)
                               }}
                               className={s.btnFollow}>
                         Unfollow</button>
-                    : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                    : <button disabled={followingInProgress.some(id => id === user.id)}
                               onClick={() => {
-                                  props.follow(u.id)
+                                  follow(user.id)
                               }}
                               className={s.btnFollow}>
                         Follow</button>}

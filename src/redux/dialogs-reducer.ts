@@ -17,7 +17,6 @@ let initialState = {
                 {id: 4, message: 'Its ok'},
                 {id: 5, message: 'Go code in react?'},
             ] as Array<DialogType>,
-            newMessageText: '',
             dialogs: [
                 {id: 1, name: 'Vladislav Sviridov'},
                 {id: 2, name: 'Lera Binkevich'},
@@ -29,7 +28,7 @@ let initialState = {
 export type InitialStateType = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
 export const actions = {
-    addMessageActionCreator: (text: string) => ({
+    addMessage: (text: string) => ({
         type: 'SN/DIALOGS/ADD-MESSAGE',
         messageText: text
     } as const)
@@ -41,7 +40,6 @@ const dialogsReducer = (state = initialState, action: ActionsType): InitialState
         case 'SN/DIALOGS/ADD-MESSAGE':
             return {
                 ...state,
-                newMessageText: '',
                 messages: [...state.messages, {id: 5, message: action.messageText}]
             }
         default:

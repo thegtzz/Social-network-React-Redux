@@ -1,27 +1,30 @@
 import s from "./ProfileInfo.module.css";
-import st from "../../common/FormsControls/FormsControls.module.css"
 import pm from "../Profile.module.css"
 import React from "react";
 import {Form, Field} from "react-final-form";
 import {Element} from "../../common/FormsControls/FormsControls";
 import cn from "classnames";
+import {ProfileType} from "../../../types/types";
 
 
 const Input = Element('input')
 const Textarea = Element('textarea')
 
-export const ProfileDataForm = ({profile, error, onSubmit}) => {
+type LoginFormOwnProps = {
+    onSubmit: (formData: ProfileType) => void
+    profile: ProfileType
+    initialValues: ProfileType
+}
+
+export const ProfileDataForm: React.FC<LoginFormOwnProps> = ({profile, onSubmit}) => {
     return (
         <Form initialValues={profile} onSubmit={onSubmit}>
             {({handleSubmit}) => (
                 <form onSubmit={handleSubmit} className={pm.mainInfo}>
-                    {error && <div className={st.formSummaryError}>
-                        {error}
-                    </div>}
 
                     <div className={s.pageTop}>
                         <label htmlFor='editProfileInfo' className={pm.btnProfileEdit}>Save
-                            <button id='editProfileInfo' className={s.hidden}></button>
+                            <button id='editProfileInfo' className={s.hidden}/>
                         </label>
                         <h1 className={s.name}><Field placeholder={"Full name"} name={"fullName"} component={Input}/></h1>
                     </div>

@@ -2,18 +2,23 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {Redirect, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {Field, Form} from "react-final-form";
 import {Element} from "../common/FormsControls/FormsControls";
 import {maxLengthCreator} from "../../utils/validators/validators";
 import avatar from "../../assets/images/upload_profile_photo.png"
 import {DialogDropupMenu} from "./DialogDropupMenu/DialogDropupMenu";
+import {InitialStateType} from "../../redux/dialogs-reducer";
 
 
 const Textarea = Element('textarea')
 const maxLength50 = maxLengthCreator(50)
 
-const DialogsForm = ({onSubmit}) => {
+type DialogsFormOwnProps = {
+    onSubmit: (formData: DialogsFormValuesType) => void
+}
+
+const DialogsForm: React.FC<DialogsFormOwnProps> = ({onSubmit}) => {
     return (
         <Form onSubmit={onSubmit}>
             {({handleSubmit, form}) => (
@@ -23,7 +28,7 @@ const DialogsForm = ({onSubmit}) => {
                 }}>
                     <DialogDropupMenu/>
                     <Field placeholder={"Write a message..."} name={"DialogMessage"} component={Textarea}
-                            validate={maxLength50} onKeyDown={e => {
+                            validate={maxLength50} onKeyDown={(e: React.KeyboardEvent) => {
                                 if (e.key === 'Enter') {
                                     handleSubmit(e)
                                     form.reset()
@@ -37,7 +42,15 @@ const DialogsForm = ({onSubmit}) => {
     )
 }
 
-export const Dialogs = (props) => {
+type PropsType = {
+    dialogsPage: InitialStateType
+    addMessage: (messageText: string) => void
+}
+type DialogsFormValuesType = {
+    DialogMessage: string
+}
+
+export const Dialogs: React.FC<PropsType> = (props) => {
 
     let state = props.dialogsPage
 
@@ -45,11 +58,9 @@ export const Dialogs = (props) => {
     let messagesElements = state.messages.map( m => <Message message={m.message} key={m.id} /> )
 
 
-    const onSubmit = (formData) => {
-        props.sendMessage(formData.DialogMessage)
+    const onSubmit = (formData: DialogsFormValuesType) => {
+        props.addMessage(formData.DialogMessage)
     }
-
-    if(!props.isAuth) return <Redirect to={"/login"}/>
 
     return (
         <div className={s.dialogs}>
