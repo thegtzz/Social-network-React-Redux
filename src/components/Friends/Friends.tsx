@@ -4,6 +4,8 @@ import {Paginator} from "../common/Paginator/Paginator";
 import {Friend} from "./Friend/Friend";
 import {FriendSearch} from "./FriendSearch/FriendSearch";
 import {UserType} from "../../types/types";
+import { FriendsSearch } from "./FriendSearch/Search";
+import {FilterType} from "../../redux/friends-reducer";
 
 
 type PropsType = {
@@ -11,6 +13,7 @@ type PropsType = {
     pageSize: number
     currentPage: number
     onPageChanged: (pageNumber: number) => void
+    onFilterChanged: (filter: FilterType) => void
     users: Array<UserType>
     followingInProgress: Array<number>
     follow: (userId: number) => void
@@ -47,7 +50,8 @@ export const Friends: React.FC<PropsType> = ({totalUsersCount,
             <div className={s.friendCount}>
                 All friends <span className={s.totalUsers}>{totalUsersCount}</span>
             </div>
-            <FriendSearch onSearch={SearchHandler}/>
+            {/*<FriendSearch onSearch={SearchHandler}/>*/}
+            <FriendsSearch onFilterChanged={props.onFilterChanged}/>
             {filteredData.map(u => <Friend user={u}
                                            follow={props.follow}
                                            unfollow={props.unfollow}

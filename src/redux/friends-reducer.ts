@@ -12,17 +12,23 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: [] as Array<number> // array of users ids
+    followingInProgress: [] as Array<number>, // array of users ids
+    filter: {
+        term: '',
+        friend: null as null | boolean
+    }
 }
 
 export type InitialStateType = typeof initialState
 type ThunkType = BaseThunkType<ActionsTypes>
+export type FilterType = typeof initialState.filter
 type ActionsTypes = InferActionsTypes<typeof actions>
 export const actions = {
     followSuccess: (userId: number) => ({type: 'SN/FRIENDS/FOLLOW', userId} as const),
     unfollowSuccess: (userId: number) => ({type: 'SN/FRIENDS/UNFOLLOW', userId} as const),
     setUsers: (users: Array<UserType>) => ({type: 'SN/FRIENDS/SET_USERS', users} as const),
     setCurrentPage: (currentPage: number) => ({type: 'SN/FRIENDS/SET_CURRENT_PAGE', currentPage} as const),
+    setFilter: (filter: FilterType) => ({type: 'SN/FRIENDS/SET_FILTER', payload: filter} as const),
     setTotalUsersCount: (totalUsersCount: number) => ({type: 'SN/FRIENDS/SET_TOTAL_USERS_COUNT', count: totalUsersCount} as const),
     toggleIsFetching: (isFetching: boolean) => ({type: 'SN/FRIENDS/TOGGLE_IS_FETCHING', isFetching} as const),
     toggleFollowingProgress: (isFetching: boolean, userId: number) => ({
@@ -52,6 +58,8 @@ const friendsReducer = (state = initialState, action: ActionsTypes): InitialStat
             return {...state, totalUsersCount: action.count}
         case 'SN/FRIENDS/TOGGLE_IS_FETCHING':
             return {...state, isFetching: action.isFetching}
+        case 'SN/FRIENDS/SET_FILTER':
+            return {...state, filter: action.payload}
         case 'SN/FRIENDS/TOGGLE_IS_FOLLOWING_PROGRESS':
             return {
                 ...state,
@@ -65,12 +73,14 @@ const friendsReducer = (state = initialState, action: ActionsTypes): InitialStat
 }
 
 export const requestUsers = (currentPage: number,
-                             pageSize: number): ThunkType => { // Redux's way of typing TA
+                             pageSize: number,
+                             filter: FilterType): ThunkType => { // Redux's way of typing TA
     return async (dispatch, getState) => {
-        dispatch(actions.setCurrentPage(currentPage))
         dispatch(actions.toggleIsFetching(true))
+        dispatch(actions.setCurrentPage(currentPage))
+        dispatch(actions.setFilter(filter))
 
-        let data = await userAPI.getUsers(currentPage, pageSize)
+        let data = await userAPI.getUsers(currentPage, pageSize, filter.term, filter.friend)
         dispatch(actions.toggleIsFetching(false))
         dispatch(actions.setUsers(data.items))
         dispatch(actions.setTotalUsersCount(data.totalCount))

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     follow,
-    unfollow, requestUsers
+    unfollow, requestUsers, FilterType
 } from "../../redux/friends-reducer";
 import {Friends} from "./Friends";
 import {Preloader} from "../common/Preloader/Preloader";
@@ -10,7 +10,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     getCurrentPage, getFollowingInProgress,
-    getFriends,
+    getFriends, getFriendsFilter,
     getIsFetching,
     getPageSize,
     getTotalUsersCount
@@ -25,13 +25,14 @@ type MapStatePropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: Array<number>
+    followingInProgress: Array<number>,
+    filter: FilterType
 }
 
 type MapDispatchePropsType = {
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    getUsers: (currentPage: number, pageSize: number) => void
+    getUsers: (currentPage: number, pageSize: number, filter: FilterType) => void
 }
 type OwnPropsType = {}
 
@@ -39,11 +40,18 @@ type PropsType = MapStatePropsType & MapDispatchePropsType & OwnPropsType
 
 class FriendsContainer extends React.Component<PropsType> {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize, filter} = this.props
+        this.props.getUsers(currentPage, pageSize, filter)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        const {pageSize, filter} = this.props
+        this.props.getUsers(pageNumber, pageSize, filter)
+    }
+
+    onFilterChanged = (filter: FilterType) => {
+         const {pageSize} = this.props
+        this.props.getUsers(1, pageSize, filter)
     }
 
     render() {
@@ -52,6 +60,7 @@ class FriendsContainer extends React.Component<PropsType> {
             <Friends totalUsersCount={this.props.totalUsersCount}
                      currentPage={this.props.currentPage}
                      pageSize={this.props.pageSize}
+                     onFilterChanged={this.onFilterChanged}
                      users={this.props.users}
                      follow={this.props.follow}
                      unfollow={this.props.unfollow}
@@ -70,7 +79,8 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        filter: getFriendsFilter(state)
     }
 }
 

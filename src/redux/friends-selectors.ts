@@ -30,3 +30,7 @@ export const getIsFetching = (state: AppStateType) => {
 export const getFollowingInProgress = (state: AppStateType) => {
     return state.friendsPage.followingInProgress
 }
+
+export const getFriendsFilter = (state: AppStateType) => {
+    return state.friendsPage.filter
+}
