@@ -74,7 +74,7 @@ const ProfileData: React.FC<ProfileDataPropsType> = (props) => {
         <div className={pm.mainInfo}>
             <div className={s.pageTop}>
                 {props.isOwner && <label htmlFor='editProfileInfo' className={pm.btnProfileEdit}>Edit<button id='editProfileInfo' className={s.hidden} onClick={props.goToEditMode}/></label>}
-                <h1 className={s.name}>{props.profile.fullname}</h1>
+                <h1 className={s.name}>{props.profile.fullName}</h1>
                 <div className={s.profileStatus}>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>

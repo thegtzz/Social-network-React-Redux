@@ -14,7 +14,7 @@ export const Post: React.FC<PropsType> = props => {
         <div className={s.wallPostInfo}>
             <div className={s.wallPostHeaderWrap}>
                 <img className={s.wallPostImage} src={props.profile.photos.large!} alt=""/>
-                <div className={s.wallPostHeaderInfo}>{props.profile.fullname}</div>
+                <div className={s.wallPostHeaderInfo}>{props.profile.fullName}</div>
                 <div className={s.wallPostHeaderDate}>1 May 2020</div>
             </div>
             <div className={s.wallPostContent}>
