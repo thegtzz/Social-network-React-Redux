@@ -8,7 +8,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import Login from "./components/Login/Login";
+import {Login} from "./components/Login/Login";
 import {initializeApp} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
 import store, {AppStateType} from "./redux/redux-store";
