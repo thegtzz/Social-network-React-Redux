@@ -5,6 +5,8 @@ import {Friend} from "./Friend/Friend";
 import {FriendsSearch} from "./FriendSearch/Search";
 import {FilterType, requestUsers} from "../../redux/friends-reducer";
 import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router"
+import queryString from "query-string"
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -25,10 +27,37 @@ export const Friends: React.FC<PropsType> = ({...props}) => {
     const pageSize = useSelector(getPageSize)
     const followingInProgress = useSelector(getFollowingInProgress)
     const filter = useSelector(getFriendsFilter)
+    const history = useHistory()
+
 
     useEffect(() => {
+        const parsed = queryString.parse(history.location.search.substr(1)) as {term: string, page: string, friend: string}
+        let actualPage = currentPage
+        let actualFilter = filter
+
+        if(!!parsed.page) actualPage = Number(parsed.page)
+        if(!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string}
+
+        switch (parsed.friend) {
+            case "null":
+                actualFilter = {...actualFilter, friend: null}
+                break
+            case "true":
+                actualFilter = {...actualFilter, friend: true}
+                break
+            case "false":
+                actualFilter = {...actualFilter, friend: false}
+                break
+        }
         dispatch(requestUsers(currentPage, pageSize, filter))
     }, [])
+
+    useEffect(() => {
+        history.push({
+            pathname: '/friends',
+            search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
+        })
+    }, [filter, currentPage])
 
     const dispatch = useDispatch()
     const onPageChanged = (pageNumber: number) => {

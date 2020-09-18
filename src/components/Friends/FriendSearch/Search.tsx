@@ -2,6 +2,8 @@ import React from "react";
 import s from "./FriendSearch.module.css";
 import {Formik, Form, Field} from "formik";
 import {FilterType} from "../../../redux/friends-reducer";
+import {useSelector} from "react-redux";
+import {getFriendsFilter} from "../../../redux/friends-selectors";
 
 
 const friendsSearchFormValidate = (values: any) => {
@@ -13,9 +15,10 @@ type PropsType = {
     onFilterChanged: (filter: FilterType) => void
 }
 
+type FriendFormType = "true" | "false" | "null"
 type FormType = {
     term: string
-    friend: "true" | "false" | "null"
+    friend: FriendFormType
 }
 
 export const FriendsSearch: React.FC<PropsType> = (props) => {
@@ -28,9 +31,12 @@ export const FriendsSearch: React.FC<PropsType> = (props) => {
         setSubmitting(false)
     }
 
+    const filter = useSelector(getFriendsFilter)
+
     return <>
         <Formik
-            initialValues={{term: '', friend: 'null'}}
+            enableReinitialize
+            initialValues={{term: filter.term, friend: String(filter.friend) as FriendFormType}}
             validate={friendsSearchFormValidate}
             onSubmit={submit}>
             {({isSubmitting}) => (

@@ -21,6 +21,8 @@
     "final-form": "^4.20.1",
     "formik": "^2.1.5",
     "lodash": "^4.17.15",
+    "query-string": "^6.13.2",
+    "querystring": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-final-form": "^6.5.1",
